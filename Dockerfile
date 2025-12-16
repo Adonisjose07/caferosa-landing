@@ -1,11 +1,14 @@
-FROM node:18-alpine
+FROM node:18-slim
 
 WORKDIR /app
 
-# Copiar archivos de dependencias primero para aprovechar cache de Docker
-COPY package*.json ./
+COPY package.json package-lock.json* ./
 
-RUN npm install --production
+RUN if [ -f package-lock.json ]; then \
+			npm ci --only=production; \
+		else \
+			npm install --production; \
+		fi
 
 # Copiar el resto de la aplicación
 COPY . .
