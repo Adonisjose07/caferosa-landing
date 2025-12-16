@@ -7,9 +7,9 @@ COPY package.json package-lock.json* ./
 # Instala herramientas de compilación necesarias para dependencias nativas
 # Ejecuta npm (ci o install) y limpia caches para mantener la imagen pequeña
 RUN if [ -f package-lock.json ]; then \
-			npm ci --only=production; \
+			npm ci; \
 		else \
-			npm install --production; \
+			npm install; \
 		fi
 
 # Copiar el resto de la aplicación
