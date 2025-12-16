@@ -25,7 +25,11 @@ app.use(express.json());
 
 // Servir archivos estáticos (tu index.html y assets) desde la raíz del proyecto
 app.use(express.static(path.join(__dirname)));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
+// Endpoint para manejar suscripciones
 app.post('/subscribe', async (req, res) => {
   const email = (req.body && req.body.email) ? String(req.body.email).trim() : '';
   if (!email) return res.status(400).json({ error: 'Email requerido' });
