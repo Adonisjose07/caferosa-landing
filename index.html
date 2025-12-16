@@ -222,7 +222,7 @@
     const status = document.getElementById('subscription-status');
 
     // Cambia este correo por el destinatario que recibirá las suscripciones si usas el fallback mailto
-    const OWNER_EMAIL = 'adonisjose07@gmail.com';
+    const OWNER_EMAIL = 'hola@caferosapr.com';
 
     form.addEventListener('submit', async function(e){
         e.preventDefault();
@@ -253,8 +253,8 @@
             const body = encodeURIComponent('Deseo suscribirme con este correo: ' + email);
             const mailto = `mailto:${OWNER_EMAIL}?subject=${subject}&body=${body}`;
             // Intentar abrir el cliente de correo
-            window.location.href = mailto;
-            status.textContent = `Si no se abrió tu cliente de correo, envía manualmente a ${OWNER_EMAIL}`;
+            //window.location.href = mailto;
+            status.textContent = `Gracias por suscribirte`;
         }
     });
 })();
